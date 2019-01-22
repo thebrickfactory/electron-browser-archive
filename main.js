@@ -34,14 +34,20 @@ function createWindow () {
 
 
   // Create the browser window.
-  win = new BrowserWindow({ width: 1280, height: 900 })
+  win = new BrowserWindow({
+    width: 1280,
+    height: 900,
+    webPreferences: {
+      nodeIntegration: true,
+      webviewTag: true,
+    },
+  })
 
 
   // and load the index.html of the app.
   win.loadFile('index.html')
 
   try {
-    console.log('try');
     win.webContents.debugger.attach('1.1')
   } catch (err) {
     console.log('Debugger attach failed : ', err)
