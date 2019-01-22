@@ -1,0 +1,15 @@
+html,body {
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.view {
+  display: flex;
+  flex-direction:  column;
+  height: 100%;
+}
+
+webview {
+  flex: 1;
+}
