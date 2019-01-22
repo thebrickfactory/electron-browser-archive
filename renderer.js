@@ -92,12 +92,14 @@ const { ElectronCapturer, ElectronWARCWriter } = require('node-warc')
       menu.popup()
     }, false)
 
+    webview.addEventListener('will-navigate', (e) => {
+      url.value = e.url
+    })
     webview.addEventListener('did-start-loading', () => {
-      console.log(webview.src);
-      url.value = webview.src
+      $('#refresh i.fa').removeClass('fa-redo').addClass('fa-spinner fa-pulse');
     })
     webview.addEventListener('did-stop-loading', () => {
-      console.log(webview.src);
       url.value = webview.src
+      $('#refresh i.fa').removeClass('fa-spinner fa-pulse').addClass('fa-redo');
     })
 }
